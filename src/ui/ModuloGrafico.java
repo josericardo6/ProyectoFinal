@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package iu;
+package ui;
+
 
 /**
  *
@@ -14,10 +15,14 @@ public class ModuloGrafico extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+    public static boolean terminarEjecutar = false; //Impide ejecutar otro hasta que no termine de ejecutar el actual.
+    
     public ModuloGrafico() {
         initComponents();
         
         this.setLocationRelativeTo(this);
+        
     }
 
     /**
@@ -34,8 +39,10 @@ public class ModuloGrafico extends javax.swing.JFrame {
         lblAlgoritmos = new javax.swing.JLabel();
         btnMerge = new javax.swing.JButton();
         btnInsertion = new javax.swing.JButton();
-        panelGif = new javax.swing.JPanel();
         btnVolver = new javax.swing.JButton();
+        gifPanel = new ui.PanelGif();
+        jLabel3 = new javax.swing.JLabel();
+        btnGenerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,28 +54,38 @@ public class ModuloGrafico extends javax.swing.JFrame {
 
         btnMerge.setBackground(new java.awt.Color(102, 102, 102));
         btnMerge.setText("Merge Sort");
+        btnMerge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMergeActionPerformed(evt);
+            }
+        });
 
         btnInsertion.setBackground(new java.awt.Color(102, 102, 102));
         btnInsertion.setText("Insertion Sort");
-
-        panelGif.setBackground(new java.awt.Color(102, 102, 102));
-
-        javax.swing.GroupLayout panelGifLayout = new javax.swing.GroupLayout(panelGif);
-        panelGif.setLayout(panelGifLayout);
-        panelGifLayout.setHorizontalGroup(
-            panelGifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 972, Short.MAX_VALUE)
-        );
-        panelGifLayout.setVerticalGroup(
-            panelGifLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        btnInsertion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertionActionPerformed(evt);
+            }
+        });
 
         btnVolver.setBackground(new java.awt.Color(102, 102, 102));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
+            }
+        });
+
+        gifPanel.setAlignmentX(1.0F);
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        gifPanel.add(jLabel3);
+
+        btnGenerar.setBackground(new java.awt.Color(102, 102, 102));
+        btnGenerar.setText("Generar Nodos ");
+        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarActionPerformed(evt);
             }
         });
 
@@ -79,32 +96,41 @@ public class ModuloGrafico extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnMerge, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInsertion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(lblAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblModuloGrafico)
-                    .addComponent(btnVolver))
-                .addGap(64, 64, 64)
-                .addComponent(panelGif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVolver)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnMerge, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnInsertion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblModuloGrafico)
+                            .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
+                        .addComponent(gifPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(281, 281, 281))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelGif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(lblModuloGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(lblAlgoritmos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(42, 42, 42)
+                        .addComponent(btnGenerar)
+                        .addGap(62, 62, 62)
                         .addComponent(btnMerge, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
-                        .addComponent(btnVolver)))
+                        .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(gifPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolver)
                 .addContainerGap())
         );
 
@@ -130,6 +156,32 @@ public class ModuloGrafico extends javax.swing.JFrame {
         p.setVisible(true);
         
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnMergeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMergeActionPerformed
+        
+        if (!terminarEjecutar) {
+            gifPanel.ordenarMerge();
+            jLabel3.setText("MergeSort");
+        }
+        
+    }//GEN-LAST:event_btnMergeActionPerformed
+
+    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
+        
+        if (!terminarEjecutar) {
+            gifPanel.generar();
+        }
+        
+    }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void btnInsertionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertionActionPerformed
+        
+        if (!terminarEjecutar) {
+            gifPanel.ordenarInsertion();
+            jLabel3.setText("Insertion Sort");
+        }
+        
+    }//GEN-LAST:event_btnInsertionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,12 +220,14 @@ public class ModuloGrafico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerar;
     private javax.swing.JButton btnInsertion;
     private javax.swing.JButton btnMerge;
     private javax.swing.JButton btnVolver;
+    private ui.PanelGif gifPanel;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAlgoritmos;
     private javax.swing.JLabel lblModuloGrafico;
-    private javax.swing.JPanel panelGif;
     // End of variables declaration//GEN-END:variables
 }

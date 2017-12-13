@@ -8,7 +8,7 @@ package proyectofinal;
 import da.Cola;
 import da.ListaInsertion;
 import da.ListaMerge;
-import iu.Principal;
+import ui.Principal;
 
 /**
  *
