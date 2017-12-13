@@ -21,11 +21,11 @@ public class BoxNumber {
 
     private final Font font = new Font("Tahoma", Font.BOLD, 18);
     private String number = "0";
-    public int WIDTH = 60;
+    public int WIDTH = 65;
     public int HEIGHT = 32;
     public int x;
     public int y;
-    private final Color colorBg;
+    private final Color colorBg = Color.LIGHT_GRAY;
     private Dimension dimensionText;
     private final Color[] color = {new Color(255, 0, 0),
         new Color(255, 0, 246),
@@ -38,7 +38,8 @@ public class BoxNumber {
 
     public BoxNumber() {
         Random rn = new Random();
-        colorBg = color[rn.nextInt(color.length)];
+//        colorBg = color[rn.nextInt(color.length)];
+        
     }
 
     public void draw(Graphics2D g2) {

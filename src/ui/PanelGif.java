@@ -35,7 +35,7 @@ public class PanelGif extends JPanel {
 
     public PanelGif() {
         setSize(dimension);
-        setBackground(Color.BLACK);
+//        setBackground(Color.BLACK);
         setVisible(true);
     }
     
@@ -43,7 +43,8 @@ public class PanelGif extends JPanel {
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(new Color(255, 255, 255));
+//        g2.setColor(new Color(255, 255, 255));
+        g2.setColor(Color.darkGray);
         g2.fill(new Rectangle2D.Double(0, 0, getWidth(), getHeight()));
         //pinta numeros y casillas
         if (bNumber != null) {
