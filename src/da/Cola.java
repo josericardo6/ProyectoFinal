@@ -441,6 +441,14 @@ public class Cola <T extends Comparable<T>> {
         }
     }
     
+     /**
+     * <h1>printDocs</h1>
+     * <p>
+     * Regresa una lista de solo documentos ordenada 
+     * </p>
+     *
+     * @return String: resultado de la operacion(Lista).
+     */
     public String printDocs(){
         
         if (!isEmpty()) {

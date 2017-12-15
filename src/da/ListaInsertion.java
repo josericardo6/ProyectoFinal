@@ -135,34 +135,34 @@ public class ListaInsertion <T extends Comparable<T>>  {
      * <p>
      * Ordena la Lista.</p>
      *
-     * @param ListaOrdenada Nodos ordenados
+     * @param listaOrdenada Nodos ordenados
      * @param añadido Nodo que se desea ordenar
      * @return Cola ordenada.
      */
-    public Nodo sortedInsert(Nodo ListaOrdenada, Nodo añadido) {
+    public Nodo sortedInsert(Nodo listaOrdenada, Nodo añadido) {
         
         
-        if (ListaOrdenada == null) { //Si la Lista Ordenada se encuentra vacia.
+        if (listaOrdenada == null) { //CASO 1: Si la Lista Ordenada se encuentra vacia.
             return añadido; //Añade el primer elemento a la Lista ordenada.
         }
 
         Nodo ant = null;
-        Nodo aux = ListaOrdenada;
+        Nodo aux = listaOrdenada;               //CASO 2:
         while (aux != null && aux.getPersona().getCedula().compareTo(añadido.getPersona().getCedula()) < 0) {   //Mientras el Aux de la ordenada sea menor al Nodo de la Lista Original.
             ant = aux;
             aux = aux.getSiguiente();
         }
 
         if (ant == null) {                      //Si esta condicion se cumple significa que el nodo añadido es menor que el primero de la Lista.
-            añadido.setSiguiente(ListaOrdenada); //Por lo tanto lo añade de primero en la Lista
+            añadido.setSiguiente(listaOrdenada); //Por lo tanto lo añade de primero en la Lista
             return añadido;
         }
 
-        Nodo antSig = ant.getSiguiente();
-        ant.setSiguiente(añadido);              //Sino el Nodo mayor se añade despues del menor.
+        Nodo antSig = ant.getSiguiente();  //CASO 3: Sino el Nodo mayor se añade despues del menor.
+        ant.setSiguiente(añadido);              
         añadido.setAnterior(ant);
         añadido.setSiguiente(antSig);           //Conecta el Nodo mayor con el que estaba conectado antes el menor.
-        return ListaOrdenada;
+        return listaOrdenada;
     }
     
      /**
@@ -489,6 +489,14 @@ public class ListaInsertion <T extends Comparable<T>>  {
         pasaportePrimero();     //Coloca los pasaportes primero despues de ordenar.
     }
     
+     /**
+     * <h1>printDocs</h1>
+     * <p>
+     * Regresa una lista de solo documentos ordenada 
+     * </p>
+     *
+     * @return String: resultado de la operacion(Lista).
+     */
     public String printDocs(){
         
         if (!isEmpty()) {
