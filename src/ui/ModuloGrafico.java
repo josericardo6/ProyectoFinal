@@ -58,6 +58,7 @@ public class ModuloGrafico extends javax.swing.JFrame {
 
         btnMerge.setBackground(new java.awt.Color(102, 102, 102));
         btnMerge.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnMerge.setForeground(new java.awt.Color(255, 255, 255));
         btnMerge.setText("Merge Sort");
         btnMerge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +68,7 @@ public class ModuloGrafico extends javax.swing.JFrame {
 
         btnInsertion.setBackground(new java.awt.Color(102, 102, 102));
         btnInsertion.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnInsertion.setForeground(new java.awt.Color(255, 255, 255));
         btnInsertion.setText("Insertion Sort");
         btnInsertion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +78,7 @@ public class ModuloGrafico extends javax.swing.JFrame {
 
         btnVolver.setBackground(new java.awt.Color(102, 102, 102));
         btnVolver.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +93,7 @@ public class ModuloGrafico extends javax.swing.JFrame {
 
         btnGenerar.setBackground(new java.awt.Color(102, 102, 102));
         btnGenerar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnGenerar.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerar.setText("Generar Nodos ");
         btnGenerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

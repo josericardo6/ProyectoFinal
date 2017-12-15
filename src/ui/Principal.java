@@ -6,8 +6,11 @@
 package ui;
 
 import da.Cola;
+import da.ListaData;
 import da.ListaInsertion;
 import da.ListaMerge;
+import da.NodoData;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import sun.reflect.annotation.TypeAnnotationParser;
 
@@ -20,6 +23,9 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+    ListaData lista = new ListaData();
+    
     public Principal() {
         initComponents();
         
@@ -48,6 +54,7 @@ public class Principal extends javax.swing.JFrame {
         btnMerge1 = new javax.swing.JButton();
         btnInsertionSim = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        lblAlgoritmo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -65,6 +72,7 @@ public class Principal extends javax.swing.JFrame {
 
         btnMergeCola.setBackground(new java.awt.Color(102, 102, 102));
         btnMergeCola.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnMergeCola.setForeground(new java.awt.Color(255, 255, 255));
         btnMergeCola.setText("Merge Sort Cola");
         btnMergeCola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +82,7 @@ public class Principal extends javax.swing.JFrame {
 
         btnInsertionCir.setBackground(new java.awt.Color(102, 102, 102));
         btnInsertionCir.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnInsertionCir.setForeground(new java.awt.Color(255, 255, 255));
         btnInsertionCir.setText("Insertion Sort Lista Circular");
         btnInsertionCir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,10 +101,17 @@ public class Principal extends javax.swing.JFrame {
 
         btnHistorial.setBackground(new java.awt.Color(102, 102, 102));
         btnHistorial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
         btnHistorial.setText("Historial");
+        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistorialActionPerformed(evt);
+            }
+        });
 
         btnModulo.setBackground(new java.awt.Color(102, 102, 102));
         btnModulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnModulo.setForeground(new java.awt.Color(255, 255, 255));
         btnModulo.setText("Modulo Grafico");
         btnModulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +121,7 @@ public class Principal extends javax.swing.JFrame {
 
         btnMerge1.setBackground(new java.awt.Color(102, 102, 102));
         btnMerge1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnMerge1.setForeground(new java.awt.Color(255, 255, 255));
         btnMerge1.setText("Merge Sort Lista Simple");
         btnMerge1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +131,7 @@ public class Principal extends javax.swing.JFrame {
 
         btnInsertionSim.setBackground(new java.awt.Color(102, 102, 102));
         btnInsertionSim.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnInsertionSim.setForeground(new java.awt.Color(255, 255, 255));
         btnInsertionSim.setText("Insertion Sort Lista Simple");
         btnInsertionSim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +141,7 @@ public class Principal extends javax.swing.JFrame {
 
         btnSalir.setBackground(new java.awt.Color(102, 102, 102));
         btnSalir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,26 +167,22 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(btnInsertionCir, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(150, 150, 150))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnModulo)
-                                .addGap(150, 150, 150))))
+                            .addComponent(btnHistorial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModulo, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(150, 150, 150))))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAlgoritmo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +203,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(btnInsertionSim, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInsertionCir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModulo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(172, 172, 172)
+                .addGap(121, 121, 121)
+                .addComponent(lblAlgoritmo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                     .addComponent(txtDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,6 +248,18 @@ public class Principal extends javax.swing.JFrame {
         String tiempo = String.valueOf(tiempoTotalLS/1000000);
         
         txtDuracion.setText(tiempo + "s");
+        lblAlgoritmo.setText("Merge Sort Simple");
+        
+        Calendar calendario = Calendar.getInstance();
+        int hora, minutos, segundos;
+        hora =calendario.get(Calendar.HOUR_OF_DAY);
+        minutos = calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND);
+        
+        String horaActual = hora + ":" + minutos + ":" + segundos;
+        
+        NodoData nuevo = new NodoData("Merge Sort Simple",tiempo,horaActual);
+        lista.add(nuevo);
         
 //        JOptionPane.showMessageDialog(this, "Se ejecuto el MergeSort Simple.");
         
@@ -253,6 +282,18 @@ public class Principal extends javax.swing.JFrame {
         String tiempo = String.valueOf(tiempoTotalLS/1000000);
         
         txtDuracion.setText(tiempo + "s");
+        lblAlgoritmo.setText("Merge Sort Cola");
+        
+        Calendar calendario = Calendar.getInstance();
+        int hora, minutos, segundos;
+        hora =calendario.get(Calendar.HOUR_OF_DAY);
+        minutos = calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND);
+        
+        String horaActual = hora + ":" + minutos + ":" + segundos;
+        
+        NodoData nuevo = new NodoData("Merge Sort Cola",tiempo,horaActual);
+        lista.add(nuevo);
         
     }//GEN-LAST:event_btnMergeColaActionPerformed
 
@@ -272,6 +313,18 @@ public class Principal extends javax.swing.JFrame {
         String tiempo = String.valueOf(tiempoTotalLS/1000000);
         
         txtDuracion.setText(tiempo + "s");
+        lblAlgoritmo.setText("Insertion Sort Simple");
+        
+        Calendar calendario = Calendar.getInstance();
+        int hora, minutos, segundos;
+        hora =calendario.get(Calendar.HOUR_OF_DAY);
+        minutos = calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND);
+        
+        String horaActual = hora + ":" + minutos + ":" + segundos;
+        
+        NodoData nuevo = new NodoData("Insertion Sort Simple",tiempo,horaActual);
+        lista.add(nuevo);
     }//GEN-LAST:event_btnInsertionSimActionPerformed
 
     private void btnInsertionCirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertionCirActionPerformed
@@ -290,8 +343,26 @@ public class Principal extends javax.swing.JFrame {
         String tiempo = String.valueOf(tiempoTotalLS/1000000);
         
         txtDuracion.setText(tiempo + "s");
+        lblAlgoritmo.setText("Insertion Sort Circular");
+        
+        Calendar calendario = Calendar.getInstance();
+        int hora, minutos, segundos;
+        hora =calendario.get(Calendar.HOUR_OF_DAY);
+        minutos = calendario.get(Calendar.MINUTE);
+        segundos = calendario.get(Calendar.SECOND);
+        
+        String horaActual = hora + ":" + minutos + ":" + segundos;
+        
+        NodoData nuevo = new NodoData("Insertion Sort Circular",tiempo,horaActual);
+        lista.add(nuevo);
         
     }//GEN-LAST:event_btnInsertionCirActionPerformed
+
+    private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
+        
+        JOptionPane.showMessageDialog(null, lista.toString());
+        
+    }//GEN-LAST:event_btnHistorialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,6 +411,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblAlgoritmo;
     private javax.swing.JTextField txtDuracion;
     // End of variables declaration//GEN-END:variables
 }
