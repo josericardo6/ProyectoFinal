@@ -19,9 +19,10 @@ import ui.Principal;
  * 
  * Se implemento el metodo de ordenamiento Merge Sort en una lista simple y una cola.
  * Se implemento el metodo de ordenamiento Insertion Sort en una lista simple y circular.
+ * Se implemento un modulo grafico para ver como funcionan los metodos Merge e Insertion Sort.
  * 
  * Creacion: 12 / 12 / 2017
- * Ultima revision: 12 / 12 / 2017
+ * Ultima revision: 14 / 12 / 2017
  */
 
 public class ProyectoFinal {

@@ -90,8 +90,8 @@ public class ListaMerge<T extends Comparable<T>> {
                 documento = documento.toUpperCase();
             }
             
-            Persona miPersona = new Persona(nombre, apellido, apellido2, documento, edad);
-            Nodo nuevo = new Nodo(miPersona);
+            Persona nuevaPersona = new Persona(nombre, apellido, apellido2, documento, edad);
+            Nodo nuevo = new Nodo(nuevaPersona);
             if (isEmpty()) {
                 cabeza = nuevo;
                 ultimo = nuevo;
@@ -99,7 +99,7 @@ public class ListaMerge<T extends Comparable<T>> {
                 ultimo.setSiguiente(nuevo);
                 ultimo = nuevo;
             }
-            nuevo.setPersona(miPersona);
+            nuevo.setPersona(nuevaPersona);
             size++;
             return true;
         } else {
@@ -129,11 +129,11 @@ public class ListaMerge<T extends Comparable<T>> {
         mitad.setSiguiente(null);
 
         //Divide la lista hasta que tenga solo un elemento cada uno.
-        Nodo izq = mergeSort(inicial);
-        Nodo der = mergeSort(sigMitad);
+        Nodo listaUno = mergeSort(inicial);
+        Nodo listaDos = mergeSort(sigMitad);
 
-        //Comienza a mezclar la mitad izq y la mitad der.
-        mergeS(izq, der);
+        //Comienza a mezclar la mitad listaUno y la mitad listaDos.
+        mergeS(listaUno, listaDos);
         return cabeza;
     }
     
@@ -142,21 +142,21 @@ public class ListaMerge<T extends Comparable<T>> {
      * <p>
      * Mezcla las sublistas creadas por el MergeSort</p>
      *
-     * @param izqIni Inicio de la Lista Izquierda
-     * @param derIni Inicio de la Lista Derecha
+     * @param listaUnoIni Inicio de la Lista Izquierda
+     * @param listaDosIni Inicio de la Lista Derecha
      */
-    public void mergeS(Nodo izqIni, Nodo derIni) {
+    public void mergeS(Nodo listaUnoIni, Nodo listaDosIni) {
         Nodo aux;
         Nodo mezclar = null;
         Nodo añadido = new Nodo(null);
 
-        while (izqIni != null && derIni != null) {
-            if (izqIni.getPersona().getCedula().compareTo(derIni.getPersona().getCedula()) < 0) {
-                aux = izqIni;
-                izqIni = izqIni.getSiguiente();
+        while (listaUnoIni != null && listaDosIni != null) {
+            if (listaUnoIni.getPersona().getCedula().compareTo(listaDosIni.getPersona().getCedula()) < 0) {
+                aux = listaUnoIni;
+                listaUnoIni = listaUnoIni.getSiguiente();
             } else {
-                aux = derIni;
-                derIni = derIni.getSiguiente();
+                aux = listaDosIni;
+                listaDosIni = listaDosIni.getSiguiente();
             }
 
             if (mezclar != null) {
@@ -164,13 +164,13 @@ public class ListaMerge<T extends Comparable<T>> {
             } else {
                 mezclar = aux;
             }
-            añadido = aux;
-        }
+            añadido = aux;   
+        }//fin While
 
-        if (izqIni == null) {
-            añadido.setSiguiente(derIni);
+        if (listaUnoIni == null) {
+            añadido.setSiguiente(listaDosIni);
         } else {
-            añadido.setSiguiente(izqIni);
+            añadido.setSiguiente(listaUnoIni);
         }
         cabeza = mezclar;
     }
