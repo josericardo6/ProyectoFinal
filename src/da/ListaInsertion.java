@@ -489,4 +489,24 @@ public class ListaInsertion <T extends Comparable<T>>  {
         pasaportePrimero();     //Coloca los pasaportes primero despues de ordenar.
     }
     
+    public String printDocs(){
+        
+        if (!isEmpty()) {
+            StringBuilder builder = new StringBuilder();
+            Nodo aux = cabeza;
+            int cont = 0;
+            while (cont < size) {
+                builder.append(aux.getPersona().getCedula()).append("  ->  ");
+                aux = aux.getSiguiente();
+                cont++;
+            }
+            
+            String res = builder.toString().substring(0, builder.toString().length() - 5);
+            res+= "\n";
+            
+            return res;
+        }
+        return "";
+    }
+    
 }

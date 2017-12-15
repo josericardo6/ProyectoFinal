@@ -43,13 +43,14 @@ public class ProyectoFinal {
         
         simpleM.add("Ricardo", "Rodriguez", "Moya", "2-0740-0314", 22.0);
         simpleM.add("Juan", "Perez", "Mora", "1-1121-0507", 29.0);
-        simpleM.add("Brayan", "Oconer", "Splinner", "M12378", 34.0);
+        simpleM.add("Brayan", "Oconer", "Splinner", "M12378", 25.0);
         simpleM.add("Obama", "Barack", "Simion", "E78072", 56.0);
         
         System.out.println("***************MERGE SORT LISTA SIMPLE: \n\n Original: \n"+simpleM.toString());
         simpleM.mergeSort(simpleM.getCabeza());
         simpleM.pasaportePrimero();
         System.out.println("Ordenada:\n"+simpleM.toString());
+        System.out.println(simpleM.printDocs());
         
         //MERGE SORT COLA
         
@@ -62,6 +63,7 @@ public class ProyectoFinal {
         cola.mergeSort(cola.top());
         cola.pasaportePrimero();
         System.out.println("Ordenada:\n"+cola.toString());
+        System.out.println(cola.printDocs());
         
         //INSERTION SORT LISTA SIMPLE
         
@@ -73,6 +75,7 @@ public class ProyectoFinal {
         System.out.println("***************INSERTION SORT LISTA SIMPLE: \n\n Original: \n"+simpleIn.toString());
         simpleIn.insertionSort();
         System.out.println("Ordenada:\n"+simpleIn.toString());
+        System.out.println(simpleIn.printDocs());
         
         //INSERTION SORT LISTA CIRCULAR
         
@@ -84,12 +87,12 @@ public class ProyectoFinal {
         System.out.println("***************INSERTION SORT CIRCULAR: \n\n Original: \n"+circularIn.toString());
         circularIn.insertionSortCircular();
         System.out.println("Ordenada:\n"+circularIn.toString());
+        System.out.println(circularIn.printDocs());
         
         //MODULOS GRAFICOS
         
-        Principal p = new Principal();
-        
-        p.setVisible(true);
+//        Principal p = new Principal();
+//        p.setVisible(true);
         
     }
     
